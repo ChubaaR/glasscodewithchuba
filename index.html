@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code With Chuba</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./assets/images/my-avatar.jpg" type="image/x-icon">
+
+  <!-- tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- custom css -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+</head>
+
+<body class="bg-black">
+
+  <!-- ======================= NAV (persistent, liquid-glass pill) ======================= -->
+
+  <div class="fixed top-0 inset-x-0 z-50 pt-6 px-4 md:pt-8 md:px-6">
+    <nav class="liquid-glass rounded-full max-w-5xl mx-auto px-6 py-3 flex items-center justify-between">
+
+      <a href="#about" class="flex items-center gap-2 text-white font-semibold text-lg shrink-0">
+        <img src="./assets/images/my-avatar.jpg" alt="Code With Chuba" class="w-6 h-6 rounded-full object-cover">
+        <span>Code With Chuba</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8 text-sm text-white/80">
+        <li><a href="#about" data-nav-link data-page="about" class="hover:text-white transition-colors">About</a></li>
+        <li><a href="#upcoming-events" data-nav-link data-page="upcoming-events" class="hover:text-white transition-colors">Events</a></li>
+        <li><a href="#e-books" data-nav-link data-page="e-books" class="hover:text-white transition-colors">E-Books</a></li>
+        <li><a href="#contact" data-nav-link data-page="contact" class="hover:text-white transition-colors">Contact</a></li>
+      </ul>
+
+      <div class="hidden md:flex items-center gap-6">
+        <a href="#contact" class="liquid-glass rounded-full px-6 py-2 text-white text-sm">Let's Collab</a>
+      </div>
+
+      <button id="menu-btn" class="md:hidden liquid-glass rounded-full p-2 text-white" aria-label="Toggle menu">
+        <i data-lucide="menu" class="w-5 h-5" id="menu-icon"></i>
+        <i data-lucide="x" class="w-5 h-5 hidden" id="close-icon"></i>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="md:hidden max-h-0 opacity-0 overflow-hidden">
+      <div class="liquid-glass rounded-3xl max-w-5xl mx-auto mt-3 px-6 py-5 flex flex-col gap-4 text-white/80 text-sm">
+        <a href="#about" data-nav-link data-page="about" class="hover:text-white transition-colors">About</a>
+        <a href="#upcoming-events" data-nav-link data-page="upcoming-events" class="hover:text-white transition-colors">Events</a>
+        <a href="#e-books" data-nav-link data-page="e-books" class="hover:text-white transition-colors">E-Books</a>
+        <a href="#contact" data-nav-link data-page="contact" class="hover:text-white transition-colors">Contact</a>
+        <div class="h-px bg-white/10 my-1"></div>
+        <a href="mailto:codewithchuba@gmail.com" class="text-white">Email me</a>
+        <a href="#contact" class="liquid-glass rounded-full px-6 py-2 text-white text-center">Let's Collab</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="relative">
+    <video autoplay muted loop class="fixed inset-0 w-full h-full object-cover -z-10">
+      <source src="./assets/videos/Vintage_computer_BG.mp4" type="video/mp4">
+    </video>
+    <div class="fixed inset-0 bg-black/50 -z-5 pointer-events-none"></div>
+
+    <!-- ======================= ABOUT (default page, includes hero) ======================= -->
+
+    <article class="page active" id="about" data-page="about">
+
+      <!-- hero -->
+      <section class="relative w-full min-h-screen overflow-hidden bg-transparent flex flex-col">
+        <div class="absolute inset-0 hero-glow"></div>
+        <div class="absolute inset-0 grain pointer-events-none"></div>
+        <div class="absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[900px] rounded-full bg-white/[0.03] blur-3xl"></div>
+
+        <div class="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-6 pt-24">
+          <figure class="w-20 h-20 rounded-full overflow-hidden liquid-glass mb-8">
+            <img src="./assets/images/my-avatar.jpg" alt="Code With Chuba" class="w-full h-full object-cover">
+          </figure>
+
+          <h1 class="font-display text-white text-5xl md:text-6xl lg:text-7xl tracking-tight mb-8 max-w-3xl">
+            Code <em class="italic">With</em> Chuba
+          </h1>
+
+          <p class="text-white/80 text-sm max-w-xl leading-relaxed mb-10">
+            Tech courses, workshops, hackathons, and internships — curated by an IT girl in finance from
+            Kuala Lumpur who loves sharing what she learns along the way.
+          </p>
+
+          <ul class="social-list flex items-center gap-4">
+
+            <li class="social-item">
+              <a href="https://www.instagram.com/codewithchuba/" class="social-link" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/icons/instagram.svg" alt="Instagram" class="w-6 h-6 invert">
+              </a>
+            </li>
+
+            <li class="social-item">
+              <a href="https://www.threads.com/@codewithchuba" class="social-link" target="_blank" rel="noopener noreferrer">
+                <span style="font-size: 22px; color: #ffffff; font-weight: semi-bold; display: flex; align-items: center; justify-content: center;">@</span>
+              </a>
+            </li>
+
+            <li class="social-item">
+              <a href="https://whatsapp.com/channel/0029VbBIoNB2phHPmi9ONT12?utm_source=threads&utm_medium=social&utm_content=link_in_bio" class="social-link" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="w-5 h-5 invert">
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="relative z-10 flex justify-center pb-8 text-white/40">
+          <i data-lucide="chevron-down" class="w-5 h-5 animate-bounce"></i>
+        </div>
+      </section>
+
+      <!-- about text -->
+      <section class="relative z-10 max-w-3xl mx-auto px-6 py-24">
+        <p class="font-display text-3xl text-white mb-10 text-center">About me</p>
+        <p class="text-white/80 leading-relaxed mb-6">
+          I'm an IT person in finance industry and community organiser from Kuala Lumpur, Malaysia.
+          I enjoy learning, doing and sharing tech knowledge with others.
+          I have a passion for technology and love to explore new things in the tech world.
+        </p>
+        <p class="text-white/80 leading-relaxed">
+          Techie 👩‍💻 Sharing Tech Courses | Workshops | Tech Events | Hackathons | Competitions |
+          Internships | Other side of a techie... 😉
+        </p>
+      </section>
+
+      <!-- services -->
+      <section class="relative z-10 max-w-5xl mx-auto px-6 pb-28">
+        <h3 class="font-display text-3xl text-white mb-10 text-center">What I do</h3>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+          <div class="liquid-glass rounded-2xl p-6">
+            <h4 class="text-white font-semibold mb-2">Tech Courses</h4>
+            <p class="text-white/80 leading-relaxed mb-6">
+              Discover useful tech courses, certifications, and learning opportunities to level up your skills.
+            </p>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-6">
+            <h4 class="text-white font-semibold mb-2">Workshops &amp; Tech Events</h4>
+            <p class="text-white/80 leading-relaxed mb-6">
+              Sharing upcoming workshops, webinars, conferences, and events happening across the tech community.
+            </p>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-6">
+            <h4 class="text-white font-semibold mb-2">Hackathons &amp; Competitions</h4>
+            <p class="text-white/80 leading-relaxed mb-6">
+              Find hackathons, challenges, and competitions where you can build, compete, learn, and connect.
+            </p>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-6">
+            <h4 class="text-white font-semibold mb-2">Internships &amp; Opportunities</h4>
+            <p class="text-white/80 leading-relaxed mb-6">
+              Discover internships, graduate programmes, jobs, and other opportunities to kick-start your tech career.
+            </p>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-6">
+            <h4 class="text-white font-semibold mb-2">The Other Side of Tech</h4>
+            <p class="text-white/80 leading-relaxed mb-6">
+              Tech isn't just coding. I also share the lifestyle, experiences, struggles, wins, and fun side of being a techie.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+    </article>
+
+    <!-- ======================= EVENTS ======================= -->
+
+    <article class="page" id="upcoming-events" data-page="upcoming-events">
+      <section class="relative z-10 max-w-3xl mx-auto px-6 pt-40 pb-28 text-center">
+        <p class="text-white/80 text-sm tracking-wide mb-4">Events</p>
+        <h2 class="font-display text-4xl md:text-5xl text-white mb-10" style="color: #ffffff;">Upcoming Events</h2>
+
+        <div class="liquid-glass rounded-2xl px-8 py-14 flex flex-col items-center gap-4">
+          <i data-lucide="mic" class="w-6 h-6 text-white/70"></i>
+          <p class="text-white/80">Coming soon, stay tuned!</p>
+        </div>
+      </section>
+    </article>
+
+    <!-- ======================= E-BOOKS ======================= -->
+
+    <article class="page" id="e-books" data-page="e-books">
+      <section class="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-28">
+        <p class="text-white/80 text-sm tracking-wide mb-4 text-center">E-Books</p>
+        <h2 class="font-display text-4xl md:text-5xl text-white mb-10 text-center" style="color: #ffffff;">Free downloads</h2>
+
+        <ul class="flex gap-3 overflow-x-auto has-scrollbar pb-2 mb-10 justify-center flex-wrap">
+          <li><button class="liquid-glass rounded-full px-5 py-2 text-sm text-white active" data-filter-btn>All</button></li>
+          <li><button class="liquid-glass rounded-full px-5 py-2 text-sm text-white/70" data-filter-btn>AI</button></li>
+          <li><button class="liquid-glass rounded-full px-5 py-2 text-sm text-white/70" data-filter-btn>Cybersecurity</button></li>
+          <li><button class="liquid-glass rounded-full px-5 py-2 text-sm text-white/70" data-filter-btn>Data Science</button></li>
+        </ul>
+
+        <ul class="project-list grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <li class="project-item active book-card" data-filter-item data-category="AI">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/AI%20Engineering%20-%20Chip%20Huyen.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/AI-Engineering.jpg" alt="AI Engineering" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">AI Engineering</h3>
+                <p class="text-white/50 text-xs">AI</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="AI">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Prompt%20Engineering%20for%20LLMs%20-%20John%20Berryman%2C%20Albert%20Ziegler.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Prompt-Engineering-LLM.jpg" alt="Prompt Engineering" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Prompt Engineering for LLMs</h3>
+                <p class="text-white/50 text-xs">AI</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="cybersecurity">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Web%20Application%20Hackers%20Handbook%20-%20Dafydd%20Stuttard%2C%20Marcus%20Pinto.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Web-Application-Hackers-Handbook.jpg" alt="Web Application Hackers Handbook" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Web Application Hackers Handbook</h3>
+                <p class="text-white/50 text-xs">Cybersecurity</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="cybersecurity">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Cybersecurity%20The%20Beginner%27s%20Guide%20-%20Dr%20Erdal%20Ozkaya.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Cybersecurity-The-Beginner's-Guide.jpg" alt="Cybersecurity: The Beginner's Guide" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Cybersecurity: The Beginner's Guide — Dr Erdal Ozkaya</h3>
+                <p class="text-white/50 text-xs">Cybersecurity</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="AI">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Artificial%20Intelligence%20With%20Python%20-%20Alberto%20Artasanchez,%20Prateek%20Joshi.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/AI-Python.jpg" alt="Artificial Intelligence with Python - Second Edition" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Artificial Intelligence with Python — 2nd Edition</h3>
+                <p class="text-white/50 text-xs">AI</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="AI">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Build%20a%20Large%20Language%20Model%20%28From%20Scratch%29%20-%20Sebastian%20Raschka.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/LLM-Scratch.png" alt="LLM-Scratch" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Build a Large Language Model (From Scratch)</h3>
+                <p class="text-white/50 text-xs">AI</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="AI">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Introduction%20to%20Machine%20Learning%20with%20Python%20-%20Andreas%20C%20Muller%20%26%20Sarah%20Guido.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Intro-Machine-Learning-Python.jpg" alt="Intro to Machine Learning with Python" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Introduction to Machine Learning with Python</h3>
+                <p class="text-white/50 text-xs">AI</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="cybersecurity">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/The%20Art%20of%20Invisibility%20-%20Kevin%20D.%20Mitnick,%20Robert%20Vamosi.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/The-Art-of-Invisibility.jpg" alt="The Art of Invisibility" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">The Art of Invisibility — Kevin D. Mitnick, Robert Vamosi</h3>
+                <p class="text-white/50 text-xs">Cybersecurity</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="cybersecurity">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Offensive%20Countermeasures%20The%20Art%20Of%20Active%20Defense.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Offensive-Countermeasures-The-Art-Of-Active-Defense.jpg" alt="Offensive Countermeasures The Art Of Active Defense" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Offensive Countermeasures: The Art of Active Defense</h3>
+                <p class="text-white/50 text-xs">Cybersecurity</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="cybersecurity">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Cybersecurity%20Essentials%20-%20Charles%20J%20Brooks%2C%20Christopher%20Grow%2C%20Philip%20A%20Craig%2C%20Jr.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Cybersecurity-Essentials.jpg" alt="Cybersecurity Essentials" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Cybersecurity Essentials</h3>
+                <p class="text-white/50 text-xs">Cybersecurity</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="cybersecurity">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Intelligence%20Driven%20Incident%20Response%20-%20Rebekah%20Brown%2C%20Scott%20J.%20Roberts.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Intelligence-Driven-Incident-Response.webp" alt="Intelligence Driven Incident Response" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Intelligence Driven Incident Response</h3>
+                <p class="text-white/50 text-xs">Cybersecurity</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="AI">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/Hands-On%20Large%20Language%20Models%20Language%20Understanding%20and%20Generation%20-%20Jay%20Alammar%2C%20Maarten%20Grootendorst.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/Hands-On-Large-Language-Models.jpg" alt="Hands-On Large Language Models" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">Hands-On Large Language Models</h3>
+                <p class="text-white/50 text-xs">AI</p>
+              </div>
+            </a>
+          </li>
+
+          <li class="project-item active book-card" data-filter-item data-category="AI">
+            <a href="https://raw.githubusercontent.com/ChubaaR/codewithchuba/main/assets/books/LLM%20Engineers%20Handbook%20-%20Maxime%20Labonne%2C%20Paul%20Iusztin.pdf" download
+              class="liquid-glass rounded-2xl overflow-hidden block h-full">
+              <img src="./assets/images/LLM-Engineers-Handbook.jpg" alt="LLM Engineers Handbook" loading="lazy" class="book-cover w-full">
+              <div class="p-4">
+                <h3 class="text-white text-sm font-medium mb-1">LLM Engineer's Handbook</h3>
+                <p class="text-white/50 text-xs">AI</p>
+              </div>
+            </a>
+          </li>
+
+        </ul>
+      </section>
+    </article>
+
+    <!-- ======================= CONTACT ======================= -->
+
+    <article class="page" id="contact" data-page="contact">
+      <section class="relative z-10 max-w-3xl mx-auto px-6 pt-40 pb-28">
+        <p class="text-white/80 text-sm tracking-wide mb-4 text-center">Contact</p>
+        <h2 class="font-display text-4xl md:text-5xl text-white mb-12 text-center" style="color: #ffffff;">Let's Collab</h2>
+
+        <div class="grid sm:grid-cols-3 gap-4 mb-10">
+          <div class="liquid-glass rounded-2xl p-5 flex flex-col items-center text-center gap-2">
+            <i data-lucide="mail" class="w-5 h-5 text-white/70"></i>
+            <p class="text-white/50 text-xs">Email</p>
+            <a href="mailto:codewithchuba@gmail.com" class="text-white text-sm break-all">codewithchuba@gmail.com</a>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-5 flex flex-col items-center text-center gap-2">
+            <i data-lucide="map-pin" class="w-5 h-5 text-white/70"></i>
+            <p class="text-white/50 text-xs">Location</p>
+            <address class="text-white text-sm not-italic">Kuala Lumpur, Malaysia</address>
+          </div>
+
+          <div class="liquid-glass rounded-2xl p-5 flex flex-col items-center text-center gap-2">
+            <i data-lucide="share-2" class="w-5 h-5 text-white/70"></i>
+            <p class="text-white/50 text-xs">Follow</p>
+            <div class="flex items-center gap-3">
+              <a href="https://www.instagram.com/codewithchuba/" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/icons/instagram.svg" alt="Instagram" class="w-4 h-4 invert">
+              </a>
+              <a href="https://www.threads.com/@codewithchuba" target="_blank" rel="noopener noreferrer">
+                <span style="font-size: 16px; color: #ffffff; font-weight: semi-bold; display: flex; align-items: center; justify-content: center;">@</span>
+              </a>
+              <a href="https://whatsapp.com/channel/0029VbBIoNB2phHPmi9ONT12?utm_source=threads&utm_medium=social&utm_content=link_in_bio" target="_blank" rel="noopener noreferrer">
+                <img src="./assets/icons/whatsapp.svg" alt="WhatsApp" class="w-4 h-4 invert">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <form id="contact-form" class="liquid-glass rounded-2xl p-6 flex flex-col gap-4"
+          action="https://formspree.io/f/xaeyeojl" method="POST" data-form>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <input type="text" name="fullname" placeholder="Full name" required data-form-input
+              class="liquid-glass rounded-full px-5 py-3 text-sm text-white bg-transparent">
+            <input type="email" name="email" placeholder="Email address" required data-form-input
+              class="liquid-glass rounded-full px-5 py-3 text-sm text-white bg-transparent">
+          </div>
+
+          <textarea name="message" placeholder="Your message" required data-form-input rows="5"
+            class="liquid-glass rounded-2xl px-5 py-3 text-sm text-white bg-transparent resize-none"></textarea>
+
+          <button type="submit" data-form-btn
+            class="liquid-glass rounded-full px-6 py-3 text-sm text-white flex items-center justify-center gap-2 self-start hover:opacity-90 transition-opacity">
+            <img src="./assets/icons/send.svg" alt="Send" class="w-4 h-4 invert" style="filter: invert(1) brightness(1.2);">
+            <span style="color: #ffffff;">Send Message</span>
+          </button>
+        </form>
+      </section>
+    </article>
+
+  </main>
+
+  <!-- custom js -->
+  <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
