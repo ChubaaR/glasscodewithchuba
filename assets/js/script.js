@@ -1,211 +1,161 @@
 'use strict';
 
+document.addEventListener('DOMContentLoaded', function () {
 
-
-// element toggle function
-const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-
-
-// sidebar variables
-const sidebar = document.querySelector("[data-sidebar]");
-const sidebarBtn = document.querySelector("[data-sidebar-btn]");
-
-// sidebar toggle functionality for mobile
-if (sidebarBtn) {
-  sidebarBtn.addEventListener("click", function () { elementToggleFunc(sidebar); });
-}
+  // init icons
+  if (window.lucide) lucide.createIcons();
 
 
 
-// testimonials variables
-const testimonialsItem = document.querySelectorAll("[data-testimonials-item]");
-const modalContainer = document.querySelector("[data-modal-container]");
-const modalCloseBtn = document.querySelector("[data-modal-close-btn]");
-const overlay = document.querySelector("[data-overlay]");
+  // ============= mobile menu =============
 
-// modal variable
-const modalImg = document.querySelector("[data-modal-img]");
-const modalTitle = document.querySelector("[data-modal-title]");
-const modalText = document.querySelector("[data-modal-text]");
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+  let menuOpen = false;
 
-// modal toggle function
-const testimonialsModalFunc = function () {
-  if (modalContainer) modalContainer.classList.toggle("active");
-  if (overlay) overlay.classList.toggle("active");
-}
+  const closeMobileMenu = function () {
+    menuOpen = false;
+    if (!mobileMenu) return;
+    mobileMenu.style.maxHeight = '0px';
+    mobileMenu.style.opacity = '0';
+    if (menuIcon) menuIcon.classList.remove('hidden');
+    if (closeIcon) closeIcon.classList.add('hidden');
+  };
 
-// add click event to all modal items
-for (let i = 0; i < testimonialsItem.length; i++) {
-
-  testimonialsItem[i].addEventListener("click", function () {
-
-    if (!modalImg || !modalTitle || !modalText) return;
-
-    modalImg.src = this.querySelector("[data-testimonials-avatar]").src;
-    modalImg.alt = this.querySelector("[data-testimonials-avatar]").alt;
-    modalTitle.innerHTML = this.querySelector("[data-testimonials-title]").innerHTML;
-    modalText.innerHTML = this.querySelector("[data-testimonials-text]").innerHTML;
-
-    testimonialsModalFunc();
-
-  });
-
-}
-
-// add click event to modal close button
-if (modalCloseBtn && overlay) {
-  modalCloseBtn.addEventListener("click", testimonialsModalFunc);
-  overlay.addEventListener("click", testimonialsModalFunc);
-}
-
-
-
-// custom select variables
-const select = document.querySelector("[data-select]");
-const selectItems = document.querySelectorAll("[data-select-item]");
-const selectValue = document.querySelector("[data-selecct-value]");
-const filterBtn = document.querySelectorAll("[data-filter-btn]");
-
-if (select) {
-  select.addEventListener("click", function () { elementToggleFunc(this); });
-}
-
-// add event in all select items
-for (let i = 0; i < selectItems.length; i++) {
-  selectItems[i].addEventListener("click", function () {
-
-    if (!selectValue || !select) return;
-
-    const selectedValue = this.innerText.trim();
-    selectValue.innerText = this.innerText;
-    elementToggleFunc(select);
-    filterFunc(selectedValue);
-
-  });
-}
-
-// filter variables
-const filterItems = document.querySelectorAll("[data-filter-item]");
-
-const normalizeCategory = function (value) {
-  return String(value || "").trim().toLowerCase();
-};
-
-const filterFunc = function (selectedValue) {
-  const normalizedSelectedValue = normalizeCategory(selectedValue);
-
-  for (let i = 0; i < filterItems.length; i++) {
-    const itemCategory = normalizeCategory(filterItems[i].dataset.category);
-
-    if (normalizedSelectedValue === "all" || itemCategory === normalizedSelectedValue) {
-      filterItems[i].classList.add("active");
-    } else {
-      filterItems[i].classList.remove("active");
-    }
-
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function () {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+        mobileMenu.style.opacity = '1';
+        if (menuIcon) menuIcon.classList.add('hidden');
+        if (closeIcon) closeIcon.classList.remove('hidden');
+      } else {
+        closeMobileMenu();
+      }
+    });
   }
 
-}
 
-// add event in all filter button items for large screen
-if (filterBtn.length) {
-  let lastClickedBtn = filterBtn[0];
 
-  for (let i = 0; i < filterBtn.length; i++) {
+  // ============= page navigation (hash based) =============
 
-    filterBtn[i].addEventListener("click", function () {
+  const navigationLinks = document.querySelectorAll('[data-nav-link]');
+  const pages = document.querySelectorAll('[data-page]');
 
-      const selectedValue = this.innerText.trim();
-      if (selectValue) selectValue.innerText = this.innerText;
-      filterFunc(selectedValue);
+  const syncPageFromHash = function () {
+    const hash = location.hash.replace('#', '');
+    const pageName = hash || 'about';
 
-      lastClickedBtn.classList.remove("active");
-      this.classList.add("active");
-      lastClickedBtn = this;
-
+    pages.forEach(function (page) {
+      page.classList.toggle('active', page.dataset.page === pageName);
     });
 
-  }
-}
-
-
-
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    if (!form || !formBtn) return;
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
-    }
-
-  });
-}
-
-// Handle form submission
-if (form) {
-  form.addEventListener("submit", function (e) {
-    const originalText = formBtn.querySelector("span").textContent;
-    formBtn.querySelector("span").textContent = "Sending...";
-    formBtn.disabled = true;
-
-    // Formspree will handle the rest automatically
-    // After submission, it redirects or shows success message
-  });
-}
-
-
-
-
-
-// page navigation variables
-const navigationLinks = document.querySelectorAll("[data-nav-link]");
-const pages = document.querySelectorAll("[data-page]");
-
-const syncPageFromHash = function () {
-  const hash = location.hash.replace("#", "");
-  const pageName = hash || "about";
-
-  pages.forEach((page) => {
-    const isMatch = page.dataset.page === pageName;
-    page.classList.toggle("active", isMatch);
-  });
-
-  navigationLinks.forEach((link) => {
-    const linkPage = link.dataset.page || link.textContent.trim().toLowerCase().replace(/\s+/g, "-");
-    link.classList.toggle("active", linkPage === pageName);
-  });
-};
-
-// add event to all nav link
-for (let i = 0; i < navigationLinks.length; i++) {
-  navigationLinks[i].addEventListener("click", function () {
-    const pageName = this.dataset.page || this.textContent.trim().toLowerCase().replace(/\s+/g, "-");
-
-    pages.forEach((page) => {
-      const isMatch = page.dataset.page === pageName;
-      page.classList.toggle("active", isMatch);
+    navigationLinks.forEach(function (link) {
+      link.classList.toggle('active', link.dataset.page === pageName);
     });
 
-    navigationLinks.forEach((link) => {
-      const linkPage = link.dataset.page || link.textContent.trim().toLowerCase().replace(/\s+/g, "-");
-      link.classList.toggle("active", linkPage === pageName);
-    });
-
-    history.replaceState(null, "", `#${pageName}`);
     window.scrollTo(0, 0);
-  });
-}
+  };
 
-window.addEventListener("hashchange", syncPageFromHash);
-syncPageFromHash();
+  navigationLinks.forEach(function (link) {
+    link.addEventListener('click', function () {
+      closeMobileMenu();
+      // native hash change handles the actual page swap
+    });
+  });
+
+  window.addEventListener('hashchange', syncPageFromHash);
+  syncPageFromHash();
+
+
+
+  // ============= e-book filter =============
+
+  const filterBtns = document.querySelectorAll('[data-filter-btn]');
+  const filterItems = document.querySelectorAll('[data-filter-item]');
+
+  const normalizeCategory = function (value) {
+    return String(value || '').trim().toLowerCase();
+  };
+
+  const filterFunc = function (selectedValue) {
+    const normalized = normalizeCategory(selectedValue);
+
+    filterItems.forEach(function (item) {
+      const itemCategory = normalizeCategory(item.dataset.category);
+      item.style.display = (normalized === 'all' || itemCategory === normalized) ? '' : 'none';
+    });
+  };
+
+  if (filterBtns.length) {
+    let lastActive = filterBtns[0];
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        const selectedValue = this.innerText.trim();
+        filterFunc(selectedValue);
+
+        lastActive.classList.remove('active');
+        lastActive.classList.add('text-white/70');
+        lastActive.classList.remove('text-white');
+
+        this.classList.add('active');
+        this.classList.remove('text-white/70');
+        this.classList.add('text-white');
+
+        lastActive = this;
+      });
+    });
+  }
+
+
+
+  // ============= contact form =============
+
+  const form = document.querySelector('[data-form]');
+  const formInputs = document.querySelectorAll('[data-form-input]');
+  const formBtn = document.querySelector('[data-form-btn]');
+
+  formInputs.forEach(function (input) {
+    input.addEventListener('input', function () {
+      if (!form || !formBtn) return;
+
+      if (form.checkValidity()) {
+        formBtn.removeAttribute('disabled');
+      } else {
+        formBtn.setAttribute('disabled', '');
+      }
+    });
+  });
+
+  if (form) {
+    form.addEventListener('submit', function () {
+      if (!formBtn) return;
+      const label = formBtn.querySelector('span');
+      if (label) label.textContent = 'Sending...';
+      formBtn.disabled = true;
+      // Formspree handles the rest automatically
+    });
+  }
+
+
+
+  // ============= newsletter capture (hero) =============
+
+  const newsletterForm = document.getElementById('newsletter-form');
+
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const btn = newsletterForm.querySelector('button');
+      if (btn) {
+        btn.innerHTML = '<i data-lucide="check" class="w-4 h-4"></i>';
+        if (window.lucide) lucide.createIcons();
+      }
+    });
+  }
+
+});
