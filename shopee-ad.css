@@ -1,0 +1,130 @@
+
+.shopee-ad-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.shopee-ad-modal {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  overflow: hidden;
+  border-radius: 15px;
+  background: #fffdfb;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+  animation: ad-appear 0.25s ease-out;
+}
+
+.shopee-ad-close {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
+  font-size: 21px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.shopee-ad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 13px 10px;
+  color: #8b7770;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.shopee-ad-timer {
+  color: #b84e28;
+  font-size: 10px;
+}
+
+.shopee-ad-image {
+  display: block;
+  width: 100%;
+  height: 155px;
+  object-fit: cover;
+  background: #f5eee8;
+}
+
+.shopee-ad-content {
+  padding: 13px 15px 14px;
+  text-align: center;
+}
+
+.shopee-ad-content h2 {
+  margin: 0 0 6px;
+  color: #33251f;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.shopee-ad-content > p:not(.shopee-ad-disclaimer) {
+  margin: 0 0 13px;
+  color: #81716a;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.shopee-ad-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 7px;
+  background: #ee4d2d;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.shopee-ad-button:hover:not(.disabled) {
+  background: #d93e20;
+}
+
+.shopee-ad-button.disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.shopee-ad-disclaimer {
+  margin: 10px 0 0;
+  color: #988a83;
+  font-size: 9px;
+  line-height: 1.4;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@keyframes ad-appear {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 360px) {
+  .shopee-ad-modal { max-width: 280px; }
+  .shopee-ad-image { height: 140px; }
+}
