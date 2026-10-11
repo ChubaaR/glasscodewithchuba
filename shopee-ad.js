@@ -13,7 +13,6 @@ function openAffiliate() {
 }
 
 function closeAd() {
-  // Tell index.html to close the iframe
   window.parent.postMessage("closeShopeeAd", "*");
 }
 
@@ -25,32 +24,36 @@ function handleClick() {
   }
 }
 
-closeButton.addEventListener("click", (event) => {
+// X button
+closeButton.addEventListener("click", function (event) {
   event.preventDefault();
   event.stopPropagation();
   handleClick();
 });
 
-shopeeButton.addEventListener("click", (event) => {
+// Shopee button
+shopeeButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+
   if (secondsLeft > 0) {
     event.preventDefault();
   }
-  event.stopPropagation();
 });
 
-overlay.addEventListener("click", (event) => {
-  if (event.target === overlay || event.target.closest(".shopee-ad-modal")) {
+// Only clicks outside the popup trigger the overlay action
+overlay.addEventListener("click", function (event) {
+  if (event.target === overlay) {
     handleClick();
   }
 });
 
-const timer = setInterval(() => {
+// Countdown
+const timer = setInterval(function () {
   const elapsed = Math.floor((Date.now() - startTime) / 1000);
   secondsLeft = Math.max(0, 5 - elapsed);
 
-  timerDisplay.textContent = secondsLeft > 0
-    ? `${secondsLeft}s`
-    : "Ready";
+  timerDisplay.textContent =
+    secondsLeft > 0 ? `${secondsLeft}s` : "Ready";
 
   if (elapsed >= 3) {
     closeButton.hidden = false;
@@ -59,5 +62,6 @@ const timer = setInterval(() => {
   if (secondsLeft === 0) {
     clearInterval(timer);
     shopeeButton.classList.remove("disabled");
+    shopeeButton.removeAttribute("aria-disabled");
   }
 }, 100);

@@ -183,6 +183,7 @@
     <!-- ======================= EVENTS ======================= -->
 
     <article class="page" id="upcoming-events" data-page="upcoming-events">
+
       <section class="relative z-10 max-w-3xl mx-auto px-6 pt-40 pb-28 text-center">
         <p class="text-white/80 text-sm tracking-wide mb-4">Events</p>
         <h2 class="font-display text-4xl md:text-5xl text-white mb-10" style="color: #ffffff;">Upcoming Events</h2>
@@ -197,26 +198,6 @@
     <!-- ======================= E-BOOKS ======================= -->
 
     <article class="page" id="e-books" data-page="e-books">
-
-      <!-- Shopee Ad Frame -->
-      <iframe
-        id="shopeeAdFrame"
-        src="shopee-ad.html"
-        title="Sponsored advertisement"
-        style="position:fixed;inset:0;width:100%;height:100%;border:0;z-index:99999;"
-        ></iframe>
-
-      <script>
-      window.addEventListener("message", function (event) {
-          if (event.data !== "closeShopeeAd") return;
-
-          const adFrame = document.getElementById("shopeeAdFrame");
-
-          if (adFrame) {
-            adFrame.remove();
-          }
-        });
-      </script>
 
       <section class="relative z-10 max-w-5xl mx-auto px-6 pt-40 pb-28">
         <p class="text-white/80 text-sm tracking-wide mb-4 text-center">E-Books</p>
@@ -477,6 +458,51 @@
     </article>
 
   </main>
+
+      <!-- Shared Shopee Ad -->
+      <iframe
+        id="shopeeAdFrame"
+        src="shopee-ad.html"
+        title="Sponsored advertisement"
+        style="display: none; position: fixed; inset: 0; width: 100%; height: 100%; border: 0; z-index: 99999;"
+      ></iframe>
+
+      <script>
+      (function () {
+        const adFrame = document.getElementById("shopeeAdFrame");
+
+        function showShopeeAd() {
+          adFrame.style.display = "block";
+          adFrame.src = "shopee-ad.html?v=" + Date.now();
+        }
+
+        window.addEventListener("message", function (event) {
+          if (
+            event.source !== adFrame.contentWindow ||
+            event.data !== "closeShopeeAd"
+          ) {
+            return;
+          }
+
+          adFrame.style.display = "none";
+        });
+
+        window.addEventListener("hashchange", function () {
+          const hash = window.location.hash.toLowerCase();
+
+          if (hash === "#upcoming-events" || hash === "#e-books") {
+            showShopeeAd();
+          }
+        });
+
+        const initialHash = window.location.hash.toLowerCase();
+
+        if (initialHash === "#upcoming-events" || initialHash === "#e-books") {
+          showShopeeAd();
+        }
+      })();
+      </script>
+
 
   <!-- custom js -->
   <script src="./assets/js/script.js"></script>
